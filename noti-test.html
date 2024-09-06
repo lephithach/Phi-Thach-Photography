@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thông báo</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+  </head>
+  <body>
+    <section class="container">
+      <div class="row">
+        <div class="col-lg-5 col-md-12 mx-auto my-2">
+          <h4 class="text-center text-uppercase">Kết nối mạng thành công</h4>
+          <p style="text-align: justify">
+            Bạn sẽ có 15 phút để truy cập mạng với tốc độ 10Mbps, sau 15 phút hệ
+            thống sẽ tự động ngắt kết nối.
+          </p>
+          <p>
+            Để sử dụng tiếp vui lòng truy cập vào
+            <span style="font-weight: bold; font-style: italic"
+              >cài đặt, tắt wifi, quên kết nối freewifi</span
+            >
+            và kết nối lại từ đầu.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <script>
+      function checkConnection() {
+        axios
+          .get("./fake-backend/auth.html")
+          .then((response) => {
+            console.log(response);
+            // console.log(response.data);
+            // console.log(response.request.responseText);
+            // console.log(JSON.parse(response.data));
+            // console.log("Bạn đang online!");
+          })
+          .catch((error) => {
+            console.error("Không thể kết nối đến server:", error);
+          });
+      }
+
+      checkConnection();
+    </script>
+  </body>
+</html>

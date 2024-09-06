@@ -1,0 +1,18 @@
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+  const fakeResponse = {
+    status: 200, // Replace with the desired status code (e.g., 404, 500)
+    data: {
+      // Your desired fake data structure
+      data: {
+        auth: 1,
+      },
+    },
+    headers: {
+      "Content-Type": "application/json", // Set the appropriate content type
+    },
+  };
+
+  const mockAxios = jest.createMockFromModule("axios");
+  mockAxios.get.mockResolvedValue(fakeResponse);
+</script>
