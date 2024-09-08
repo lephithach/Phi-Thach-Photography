@@ -1,7 +1,7 @@
 function countdown30Minutes() {
   const timer = document.querySelector(".timer");
 
-  const endDate = new Date().getTime() + 30 * 60 * 1000;
+  const endDate = new Date().getTime() + 15 * 60 * 1000;
 
   const x = setInterval(() => {
     const now = new Date().getTime();
