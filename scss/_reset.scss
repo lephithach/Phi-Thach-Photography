@@ -1,0 +1,18 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+@font-face {
+  font-family: "VNI-Avo";
+  src: url("../vendor/Font/VNI-Avo.TTF") format("ttf");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "VNI-Avo-Bold";
+  src: url("../vendor/Font/VNI-Avo-Bold.TTF") format("ttf");
+  font-weight: bold;
+  font-style: bold;
+}
