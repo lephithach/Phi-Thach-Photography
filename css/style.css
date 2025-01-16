@@ -31,9 +31,16 @@ nav a span {
   font-weight: normal;
 }
 
+.slider-container {
+  padding: 0;
+}
+.slider-container .row {
+  --bs-gutter-x: 0;
+  margin: 0 !important;
+}
 .slider-container img {
   width: 100%;
-  height: 550px;
+  height: 600px;
   object-fit: cover;
 }
 .slider-container .slider {
@@ -83,10 +90,49 @@ nav a span {
   opacity: 1;
 }
 
+@media screen and (max-width: 768px) {
+  .slider-container img {
+    height: 250px;
+  }
+  .slider-container .slider {
+    position: relative;
+    z-index: 1;
+  }
+  .slider-container .slider .slick-arrow {
+    display: block;
+    color: #fff;
+    position: absolute;
+    transform: scale(1);
+  }
+  .slider-container .slider .slick-arrow.slick-prev {
+    left: 25px;
+    z-index: 2;
+  }
+  .slider-container .slider .slick-arrow.slick-prev::before {
+    font-family: FontAwesome;
+    content: "\f053";
+  }
+  .slider-container .slider .slick-arrow.slick-next {
+    right: 25px;
+    z-index: 2;
+  }
+  .slider-container .slider .slick-arrow.slick-next::before {
+    font-family: FontAwesome;
+    content: "\f054";
+  }
+}
 .about-container img {
   border-radius: 0.6rem;
 }
 
+@media screen and (max-width: 768px) {
+  .about-container .about {
+    order: 1;
+  }
+  .about-container .picture {
+    order: 2;
+  }
+}
 .gallery-container .img-container {
   position: relative;
   display: inline-block;
@@ -117,12 +163,12 @@ nav a span {
 }
 .gallery-container .img-container .pic:hover {
   transform: scale(1.05);
-}
-.gallery-container .img-container .pic:hover::before {
-  opacity: 0.7;
   transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   -webkit-transition: all 0.2s ease-in-out;
+}
+.gallery-container .img-container .pic:hover::before {
+  opacity: 0.7;
 }
 .gallery-container .img-container .text {
   margin-bottom: 0;
@@ -140,6 +186,16 @@ nav a span {
   font-size: 1.5rem;
   text-transform: uppercase;
   cursor: default;
+}
+
+@media screen and (max-width: 768px) {
+  .gallery-container .img-container + .img-container {
+    margin-top: 1rem;
+    gap: 0.5rem;
+  }
+  .gallery-container .img-container .pic {
+    height: 300px;
+  }
 }
 
 /*# sourceMappingURL=style.css.map */

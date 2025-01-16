@@ -3,3 +3,14 @@
     border-radius: 0.6rem;
   }
 }
+
+@media screen and (max-width: 768px) {
+  .about-container {
+    .about {
+      order: 1;
+    }
+    .picture {
+      order: 2;
+    }
+  }
+}
