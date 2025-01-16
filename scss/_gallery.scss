@@ -7,11 +7,15 @@
     .pic {
       position: relative;
       width: 100%;
-      height: 100%;
-      //   background: url("../img/LPT_8097.jpg");
+      height: 300px;
+      // height: initial;
+      // background: url("../img/LPT_8097.jpg");
       background-repeat: no-repeat;
       object-fit: cover;
       background-size: cover;
+      -moz-background-size: cover;
+      -webkit-background-size: cover;
+      background-position: center;
       border-radius: 0.6rem;
       z-index: 1;
 
@@ -26,68 +30,18 @@
         border-radius: 0.6rem;
         z-index: 2;
       }
+
+      &:hover {
+        transform: scale(1.05);
+
+        &::before {
+          opacity: 0.7;
+          transition: all 0.2s ease-in-out;
+          -moz-transition: all 0.2s ease-in-out;
+          -webkit-transition: all 0.2s ease-in-out;
+        }
+      }
     }
-
-    // .pic2 {
-    //   position: relative;
-    //   width: 100%;
-    //   height: 100%;
-    //   //   background: url("../img/LPT_8097.jpg");
-    //   background-repeat: no-repeat;
-    //   object-fit: cover;
-    //   background-size: cover;
-    //   z-index: 1;
-
-    //   &::before {
-    //     content: "";
-    //     position: absolute;
-    //     inset: 0;
-    //     width: 100%;
-    //     height: 100%;
-    //     background-color: rgba($color: #000000, $alpha: 1);
-    //     opacity: 0.35;
-    //     border-radius: 0.6rem;
-    //     z-index: 2;
-    //   }
-    // }
-
-    // img {
-    //   display: block;
-    //   position: relative;
-    //   width: 100%;
-    //   height: auto;
-    //   border-radius: 0.6rem;
-    //   object-fit: cover;
-    //   background-repeat: no-repeat;
-    //   z-index: 1;
-
-    //   &::after {
-    //     content: "ee";
-    //     position: absolute;
-    //     top: 0;
-    //     bottom: 100%;
-    //     left: 0;
-    //     right: 100%;
-    //     // width: 100%;
-    //     // height: 100%;
-    //     background-color: rgba($color: #000000, $alpha: 0.3);
-    //     border-radius: 0.6rem;
-    //     z-index: 2;
-    //     transition: all 0.5s;
-    //     opacity: 0;
-    //   }
-    // }
-
-    // .overlay {
-    //   position: absolute;
-    //   top: 0;
-    //   left: 0;
-    //   width: calc(100% - 0.6rem);
-    //   height: 100%;
-    //   background-color: rgba($color: #000000, $alpha: 0.3);
-    //   border-radius: 0.6rem;
-    //   z-index: 2;
-    // }
 
     .text {
       margin-bottom: 0;
@@ -96,14 +50,15 @@
       left: 50%;
       width: calc(100% - 24px);
       text-align: center;
-      //   display: flex;
-      //   justify-content: center;
-      //   align-items: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
       transform: translate(-50%, -50%);
       z-index: 3;
-      //   color: #ffffff;
+      color: #ffffff;
       font-size: 1.5rem;
       text-transform: uppercase;
+      cursor: default;
     }
   }
 }

@@ -9,27 +9,21 @@ const array = [
   },
   {
     url: "../img/LPT_9370.jpg",
-    title: "Phóng sự cưới",
+    title: "Chân dung",
   },
   {
     url: "../img/LPT_8097.jpg",
-    title: "Phóng sự cưới",
+    title: "Sinh nhật",
   },
 ];
 
 const imgContainer = document.querySelector(".gallery-container .row");
-let text = "";
-array.forEach((item) => {
-  //   item.innerHTML = `
-  //     <img src="${array[index].url}" alt="${array[index].title}" />
-  //     <div class="pic-title">${array[index].title}</div>
-  //   `;
 
-  text += `
+array.forEach((item) => {
+  imgContainer.innerHTML += `
       <div class="col-lg-3 img-container">
-          <div class="pic" style="background-image:url(${item.url})"></div>
-          <p class="text">${item.title}</p>
-        </div>
+        <div class="pic" style="background-image:url(${item.url})"></div>
+         <p class="text">${item.title}</p>
+       </div>
     `;
 });
-imgContainer.innerHTML = text;

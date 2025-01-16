@@ -5,6 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Phi Thach Photography</title>
     <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body>
@@ -21,7 +34,9 @@
     <!-- Slider -->
     <div class="container-fluid slider-container">
       <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 slider">
+          <img src="./img/LPT_9370.jpg" alt="img" class="pic" />
+          <img src="./img/LPT_9370.jpg" alt="img" class="pic" />
           <img src="./img/LPT_9370.jpg" alt="img" class="pic" />
         </div>
       </div>
@@ -49,40 +64,10 @@
     <!-- Gallery -->
     <div class="container-fluid gallery-container">
       <div class="row">
-        <div class="col-lg-3 img-container">
-          <div
-            class="pic"
-            style="background-image: url(./img/LPT_8097.jpg)"
-          ></div>
+        <!-- <div class="col-lg-3 img-container">
+          <div class="pic" style="background: url(./img/LPT_8097.jpg)"></div>
           <p class="text">Phóng sự cưới</p>
-        </div>
-        <div class="col-lg-3 img-container">
-          <div
-            class="pic"
-            style="
-              background-image: url(./img/444935377_487526627066164_7476185495536316698_n.jpg);
-            "
-          ></div>
-          <p class="text">Kỷ yếu</p>
-        </div>
-        <div class="col-lg-3 img-container">
-          <div
-            class="pic"
-            style="
-              background-image: url(./img/444935377_487526627066164_7476185495536316698_n.jpg);
-            "
-          ></div>
-          <p class="text">Kỷ yếu</p>
-        </div>
-        <div class="col-lg-3 img-container">
-          <div
-            class="pic"
-            style="
-              background-image: url(./img/444935377_487526627066164_7476185495536316698_n.jpg);
-            "
-          ></div>
-          <p class="text">Kỷ yếu</p>
-        </div>
+        </div> -->
       </div>
     </div>
 
@@ -90,7 +75,57 @@
       const pic = document.querySelector(".pic");
       pic.style.backgroundImage = "url(./img/LPT_8097.jpg)";
     </script> -->
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-1.11.0.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.js"></script>
+    <script src="./js/_data.js"></script>
+    <script>
+      $(".slider").slick({
+        infinite: true,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        dots: true,
+        autoplaySpeed: 1200,
+        responsive: [
+          {
+            breakpoint: 992,
+            settings: {
+              slidesToShow: 1,
+              slidesToScroll: 1,
+              infinite: true,
+              dots: true,
+              arrows: true,
+            },
+          },
+        ],
+      });
 
-    <!-- <script src="./js/_data.js"></script> -->
+      // $(".clients-slider").slick({
+      //   infinite: true,
+      //   slidesToShow: 6,
+      //   slidesToScroll: 2,
+      //   responsive: [
+      //     {
+      //       breakpoint: 768,
+      //       settings: {
+      //         slidesToShow: 2,
+      //         slidesToScroll: 1,
+      //         infinite: false,
+      //         dots: false,
+      //         arrows: true,
+      //         autoplay: true,
+      //         autoplaySpeed: 1000,
+      //       },
+      //     },
+      //   ],
+      // });
+    </script>
   </body>
 </html>

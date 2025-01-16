@@ -4,4 +4,65 @@
     height: 550px;
     object-fit: cover;
   }
+
+  .slider {
+    position: relative;
+    z-index: 1;
+
+    .slick-arrow {
+      display: block;
+      color: #fff;
+      position: absolute;
+      transform: scale(2);
+
+      &.slick-prev {
+        left: 40px;
+        z-index: 2;
+        &::before {
+          font-family: FontAwesome;
+          content: "\f053";
+        }
+      }
+
+      &.slick-next {
+        right: 40px;
+        z-index: 2;
+
+        &::before {
+          font-family: FontAwesome;
+          content: "\f054";
+        }
+      }
+    }
+
+    .slick-dots {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+
+      li {
+        display: inline-block;
+        margin: 0 5px;
+        color: #fff;
+
+        button {
+          &::before {
+            color: #000;
+            opacity: 0.3;
+          }
+        }
+
+        &.slick-active {
+          button {
+            &::before {
+              color: #fff;
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
 }
