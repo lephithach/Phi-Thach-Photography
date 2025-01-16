@@ -13,11 +13,11 @@ const array = [
   },
   {
     url: "../img/LPT_8097.jpg",
-    title: "Sinh nhật",
+    title: "Khác",
   },
 ];
 
-const imgContainer = document.querySelector(".gallery-container .row");
+const imgContainer = document.querySelector(".gallery-container .row.album");
 
 array.forEach((item) => {
   imgContainer.innerHTML += `

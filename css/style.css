@@ -51,7 +51,7 @@ nav a span {
   display: block;
   color: #fff;
   position: absolute;
-  transform: scale(2);
+  transform: scale(1.3);
 }
 .slider-container .slider .slick-arrow.slick-prev {
   left: 40px;
@@ -170,6 +170,12 @@ nav a span {
 .gallery-container .img-container .pic:hover::before {
   opacity: 0.7;
 }
+.gallery-container .img-container .pic:hover ~ .text {
+  font-size: 1.8rem;
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+}
 .gallery-container .img-container .text {
   margin-bottom: 0;
   position: absolute;
@@ -187,6 +193,14 @@ nav a span {
   text-transform: uppercase;
   cursor: default;
 }
+.gallery-container .gallery-slider .slider img {
+  border-radius: 0.6rem;
+  height: 150px;
+  object-fit: cover;
+}
+.gallery-container .gallery-slider .description {
+  text-align: justify;
+}
 
 @media screen and (max-width: 768px) {
   .gallery-container .img-container + .img-container {
@@ -195,6 +209,67 @@ nav a span {
   }
   .gallery-container .img-container .pic {
     height: 300px;
+  }
+  .gallery-slider .slider {
+    order: 2;
+    width: 100%;
+  }
+  .gallery-slider .slider img {
+    margin: 0 0.2rem;
+  }
+  .gallery-slider .slick-dots {
+    position: absolute;
+    left: 0;
+    bottom: -25px;
+  }
+  .gallery-slider .description {
+    order: 1;
+  }
+}
+.footer-container {
+  background-color: #333;
+  color: #fff;
+  margin-top: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.footer-container .logo {
+  font-family: "VNI-Avo";
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  text-decoration: none;
+}
+.footer-container .logo span {
+  font-weight: normal;
+}
+.footer-container .social-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+}
+.footer-container .social-container .social-icon {
+  color: #fff !important;
+  text-decoration: none;
+}
+.footer-container .social-container .social-icon + .social-icon {
+  margin-left: 0.7rem;
+}
+
+@media screen and (max-width: 768px) {
+  .footer-container {
+    padding-top: 0.7rem;
+  }
+  .footer-container .logo {
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center;
+  }
+  .footer-container .social-container {
+    margin-top: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1rem;
   }
 }
 
