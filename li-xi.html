@@ -12,11 +12,31 @@
         min-width: 400px;
         width: 500px;
         max-width: 100%;
+        height: 100vh;
         margin: 0 auto;
         background-color: #d64012;
         background: linear-gradient(90deg, #ea580c 0%, #b91c1c 100%);
         color: white;
+        /* animation: bling 2s infinite ease-in-out; */
       }
+
+      /* @keyframes bling {
+        0% {
+          background: linear-gradient(70deg, #ea580c 0%, #b91c1c 100%);
+        }
+        25% {
+          background: linear-gradient(50deg, #ea580c 0%, #b91c1c 100%);
+        }
+        50% {
+          background: linear-gradient(30deg, #ea580c 0%, #b91c1c 100%);
+        }
+        75% {
+          background: linear-gradient(15deg, #ea580c 0%, #b91c1c 100%);
+        }
+        100% {
+          background: linear-gradient(0deg, #ea580c 0%, #b91c1c 100%);
+        }
+      } */
 
       .header {
         font-family: "Dancing Script", serif;
@@ -112,7 +132,13 @@
         </div>
       </div>
 
-      <audio autoplay loop>
+      <div class="row">
+        <div class="col-md-12">
+          <p class="text-center">Made by Phi Thach</p>
+        </div>
+      </div>
+
+      <audio autoplay loop id="audio">
         <source src="./vendor/mp3/thu-y.mp3" type="audio/mpeg" />
       </audio>
     </div>
@@ -124,6 +150,11 @@
       const bankname = document.getElementById("bankname");
       const button = document.querySelector(".submit");
       const qrCode = document.querySelector(".qr-code");
+      const audioElement = document.getElementById("audio");
+
+      idbank.addEventListener("click", function () {
+        audioElement.play();
+      });
 
       axios({
         method: "get",
