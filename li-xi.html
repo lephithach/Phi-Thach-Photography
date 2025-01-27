@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lì xì túi mù</title>
+    <link rel="stylesheet" href="./css/bootstrap.min.css" />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap");
+
+      body {
+        min-width: 400px;
+        width: 500px;
+        max-width: 100%;
+        margin: 0 auto;
+        background-color: #d64012;
+        background: linear-gradient(90deg, #ea580c 0%, #b91c1c 100%);
+        color: white;
+      }
+
+      .header {
+        font-family: "Dancing Script", serif;
+        font-weight: bold;
+        font-size: 5rem;
+        color: #fffb00;
+        margin-top: 1rem !important;
+      }
+
+      .form-control,
+      .form-select {
+        background-color: #d64012;
+        color: #fff;
+      }
+
+      .form-control:focus {
+        background-color: #d64012;
+        color: #fff;
+      }
+
+      button.submit {
+        /* background-color: #fffb00; */
+        background-image: url("./vendor/mp3/tui-mu.png");
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 100%;
+        height: 200px;
+        max-height: 300px;
+        background-color: transparent;
+        /* object-fit: cover; */
+        object-fit: contain;
+        /* color: #b91c1c; */
+        /* padding: 10px 20px; */
+        padding: 0 !important;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+      .submit {
+        width: 100%;
+        cursor: pointer;
+      }
+
+      .qr-code {
+        border-radius: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-12">
+          <h1 class="text-center mt-5 header">Lì xì túi mù</h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <form action="#" method="get">
+            <div class="form-group mb-2">
+              <label for="idbank">Nhập số tài khoản</label>
+              <input
+                type="number"
+                class="form-control"
+                id="idbank"
+                name="idbank"
+                required
+              />
+            </div>
+
+            <div class="form-group mb-2">
+              <label for="bankname">Chọn ngân hàng</label>
+              <select
+                name="bankname"
+                id="bankname"
+                class="form-select"
+                required
+              >
+                <!-- <option value="vietcombank">Vietcombank</option> -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <!-- <button class="submit">&nbsp;</button> -->
+              <img src="./vendor/mp3/tui-mu.png" class="submit" alt="tuimu" />
+            </div>
+          </form>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <img src="#" class="qr-code w-100 mt-3" alt="" />
+        </div>
+      </div>
+
+      <audio autoplay loop id="background-audio">
+        <source src="./vendor/mp3/thu-y.mp3" type="audio/mpeg" />
+      </audio>
+    </div>
+
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <script>
+      const idbank = document.getElementById("idbank");
+      const bankname = document.getElementById("bankname");
+      const button = document.querySelector(".submit");
+      const qrCode = document.querySelector(".qr-code");
+      const audio = document.getElementById("background-audio");
+
+      if (audio.paused) {
+        audio.play();
+      }
+
+      axios({
+        method: "get",
+        url: "https://api.vietqr.io/v2/banks",
+      }).then(function (response) {
+        let data = response.data.data;
+
+        data.forEach((bank) => {
+          bankname.innerHTML += `
+          <option value="${bank.code}">${bank.shortName}</option>
+          `;
+        });
+      });
+
+      if (localStorage.getItem("isClick") === "1") {
+        button.style.display = "none";
+      }
+
+      button.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        if (idbank.value === "") {
+          alert("Vui lòng nhập số tài khoản");
+          return;
+        }
+
+        // Check exist localStorage
+        if (localStorage.getItem("isClick") === "1") {
+          alert("Bạn đã mở túi mù rồi");
+          return;
+        } else {
+          let randomNumber = Math.floor(Math.random() * (200 - 10 + 1)) + 10;
+          //   đơn vị nghìn đồng
+          let money = randomNumber * 1000;
+
+          let idBankValue = idbank.value;
+          let bankNameValue = bankname.value;
+
+          qrCode.src = `https://img.vietqr.io/image/${bankNameValue}-${idBankValue}-compact2.jpg?amount=${money}`;
+          button.style.display = "none";
+          localStorage.setItem("isClick", "1");
+        }
+      });
+    </script>
+  </body>
+</html>
