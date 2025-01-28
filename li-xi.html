@@ -50,6 +50,7 @@
         font-size: 5rem;
         color: #fffb00;
         margin-top: 1rem !important;
+        text-decoration: none;
       }
 
       .form-control,
@@ -89,13 +90,77 @@
       .qr-code {
         border-radius: 1rem;
       }
+
+      .modal-container {
+        position: fixed;
+        z-index: 1;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        animation: fadeIn 0.5s ease-out;
+      }
+
+      @keyframes fadeIn {
+        0% {
+          opacity: 0;
+        }
+        100% {
+          opacity: 1;
+        }
+      }
+
+      .modal-container.none {
+        display: none;
+      }
+
+      .modal-popup {
+        display: fixed;
+        height: 100%;
+        z-index: 1;
+        background: linear-gradient(90deg, #ea580c 0%, #b91c1c 100%);
+        padding: 20px;
+      }
+
+      .modal-popup h1 {
+        color: #fffb00;
+        font-family: "Dancing Script", serif;
+      }
+
+      .modal-popup button {
+        color: #d64012;
+        background-color: #fffb00;
+        border: none;
+      }
+
+      .modal-popup p {
+        font-size: 2rem;
+        color: #fffb00;
+        font-family: "Dancing Script", serif;
+      }
+
+      .modal-popup .count-down {
+        font-size: 4rem;
+        color: #fffb00;
+        font-family: "Dancing Script", serif;
+      }
     </style>
   </head>
   <body>
+    <div class="modal-container none">
+      <div class="modal-popup">
+        <p class="text-center">Chúc Mừng Năm Mới</p>
+        <p class="text-center">Chúc bạn năm mới phát tài phát lộc</p>
+        <p class="text-center">Hãy chờ đón xem vận may của bạn</p>
+        <p class="count-down text-center"></p>
+      </div>
+    </div>
+
     <div class="container-fluid">
       <div class="row">
         <div class="col-md-12">
-          <h1 class="text-center mt-5 header">Lì xì túi mù</h1>
+          <h1 class="text-center mt-5 header">
+            <a href="./" class="header">Lì xì túi mù</a>
+          </h1>
         </div>
       </div>
       <div class="row">
@@ -133,14 +198,21 @@
       </div>
 
       <div class="row">
-        <div class="col-md-12">
+        <div class="col-md-12 tuimu">
           <img src="#" class="qr-code w-100 mt-3" alt="" />
         </div>
       </div>
 
       <div class="row">
         <div class="col-md-12">
-          <p class="text-center">Made by Phi Thach</p>
+          <p class="text-center">
+            <a
+              href="https://www.facebook.com/lephiithach/"
+              target="_blank"
+              style="color: white; text-decoration: none"
+              >Made by Phi Thach</a
+            >
+          </p>
         </div>
       </div>
 
@@ -157,11 +229,14 @@
       const button = document.querySelector(".submit");
       const qrCode = document.querySelector(".qr-code");
       const audioElement = document.getElementById("audio");
+      const countdownElement = document.querySelector(".count-down");
 
+      // Play audio
       idbank.addEventListener("click", function () {
         audioElement.play();
       });
 
+      // Get list bank
       axios({
         method: "get",
         url: "https://api.vietqr.io/v2/banks",
@@ -175,13 +250,15 @@
         });
       });
 
-      if (localStorage.getItem("isClick") === "1") {
-        button.style.display = "none";
-      }
+      // Check exist localStorage
+      // if (localStorage.getItem("isClick") === "1") {
+      //   button.style.display = "none";
+      // }
 
       button.addEventListener("click", function (e) {
         e.preventDefault();
 
+        // Check empty idbank input
         if (idbank.value === "") {
           alert("Vui lòng nhập số tài khoản");
           return;
@@ -189,21 +266,47 @@
 
         // Check exist localStorage
         if (localStorage.getItem("isClick") === "1") {
-          alert("Bạn đã mở túi mù rồi");
+          alert("Bạn đã mở túi mù rồi, hẹn gặp bạn ở năm sau");
           return;
         } else {
           let randomNumber = Math.floor(Math.random() * (200 - 10 + 1)) + 10;
           //   đơn vị nghìn đồng
           let money = randomNumber * 1000;
-
           let idBankValue = idbank.value;
           let bankNameValue = bankname.value;
 
-          qrCode.src = `https://img.vietqr.io/image/${bankNameValue}-${idBankValue}-compact2.jpg?amount=${money}`;
-          button.style.display = "none";
+          // Gọi hàm đếm ngược
+          countdown(countdownElement);
+
+          // Show qr code after 2s
+          setTimeout(() => {
+            qrCode.src = `https://img.vietqr.io/image/${bankNameValue}-${idBankValue}-compact2.jpg?amount=${money}`;
+            button.style.display = "none";
+          }, 2000);
+
+          // Save to localStorage
           localStorage.setItem("isClick", "1");
         }
       });
+
+      // Hàm đếm ngược
+      const countdown = (countdownElement) => {
+        let modalContainer = document.querySelector(".modal-container");
+        modalContainer.classList.remove("none");
+        // Thời gian bắt đầu (10 giây)
+        let timeLeft = 10;
+
+        // Hàm đếm ngược
+        const countdownTimer = setInterval(() => {
+          timeLeft--; // Giảm thời gian còn lại
+          countdownElement.innerHTML = timeLeft; // Cập nhật giao diện
+
+          if (timeLeft <= 0) {
+            modalContainer.classList.add("none");
+            clearInterval(countdownTimer); // Dừng đếm ngược
+          }
+        }, 1000); // Cứ mỗi giây chạy một lần
+      };
     </script>
   </body>
 </html>
