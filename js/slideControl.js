@@ -6,6 +6,7 @@ $(".slider-container .slider").slick({
   autoplay: true,
   dots: true,
   autoplaySpeed: 1200,
+  pauseOnHover: false,
   responsive: [
     {
       breakpoint: 992,
@@ -29,6 +30,7 @@ $(".gallery-slider .slider").slick({
   infinite: true,
   arrows: false,
   dots: false,
+  pauseOnHover: false,
   responsive: [
     {
       breakpoint: 992,
