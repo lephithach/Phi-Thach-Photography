@@ -4,7 +4,7 @@ const array = [
     title: "Phóng sự cưới",
   },
   {
-    url: "../img/kyyeu/NguyenTrai1.jpg",
+    url: "../img/kyyeu/TriAn4.jpg",
     title: "Kỷ yếu",
   },
   {
