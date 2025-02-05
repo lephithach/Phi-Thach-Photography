@@ -6,6 +6,15 @@ nav {
   //   align-items: center;
   background-color: #fff;
 
+  &.fix {
+    position: fixed;
+    display: block;
+    top: 0;
+    z-index: 3;
+    border-bottom: 1px solid rgba($color: #000000, $alpha: 0.3);
+    background-color: #fff;
+  }
+
   a {
     height: 50px;
     // display: flex;

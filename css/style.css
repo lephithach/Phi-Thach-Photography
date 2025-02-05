@@ -18,6 +18,14 @@
 nav {
   background-color: #fff;
 }
+nav.fix {
+  position: fixed;
+  display: block;
+  top: 0;
+  z-index: 3;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: #fff;
+}
 nav a {
   height: 50px;
   font-family: "VNI-Avo" !important;
