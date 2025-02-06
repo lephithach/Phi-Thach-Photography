@@ -33,16 +33,16 @@ array.forEach((item) => {
 });
 
 const navbar = document.querySelector("nav");
-const sliderContainer = document.querySelector(".slider-container");
+const sliderContainer = document.querySelector(".slider-container .row");
 
 window.addEventListener("scroll", (e) => {
   e.preventDefault();
 
   if (window.scrollY > 20) {
     navbar.classList.add("fix");
-    sliderContainer.style.marginTop = "100px";
+    sliderContainer.style.paddingTop = "100px";
   } else {
     navbar.classList.remove("fix");
-    sliderContainer.style.marginTop = "0px";
+    sliderContainer.style.paddingTop = "0px";
   }
 });
