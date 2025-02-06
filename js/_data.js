@@ -2,18 +2,22 @@ const array = [
   {
     url: "../img/LPT_8097.jpg",
     title: "Phóng sự cưới",
+    id: "psc",
   },
   {
     url: "../img/kyyeu/TriAn4.jpg",
     title: "Kỷ yếu",
+    id: "kyyeu",
   },
   {
     url: "../img/LPT_9370.jpg",
     title: "Chân dung",
+    id: "chandung",
   },
   {
     url: "../img/khac.jpg",
     title: "Khác",
+    id: "khac",
   },
 ];
 
@@ -21,10 +25,10 @@ const imgContainer = document.querySelector(".gallery-container .row.album");
 
 array.forEach((item) => {
   imgContainer.innerHTML += `
-      <div class="col-md-6 col-lg-3 img-container">
+      <a class="col-md-6 col-lg-3 img-container" href="#${item.id}">
         <div class="pic" style="background-image:url(${item.url})"></div>
-         <p class="text">${item.title}</p>
-       </div>
+        <p class="text">${item.title}</p>
+      </a>
     `;
 });
 
