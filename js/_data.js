@@ -1,13 +1,13 @@
 const array = [
   {
-    url: "../img/LPT_8097.jpg",
-    title: "Phóng sự cưới",
-    id: "psc",
-  },
-  {
     url: "../img/kyyeu/TriAn4.jpg",
     title: "Kỷ yếu",
     id: "kyyeu",
+  },
+  {
+    url: "../img/LPT_8097.jpg",
+    title: "Phóng sự cưới",
+    id: "psc",
   },
   {
     url: "../img/LPT_9370.jpg",
