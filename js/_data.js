@@ -1,6 +1,6 @@
 const array = [
   {
-    url: "../img/kyyeu/TriAn4.jpg",
+    url: "../img/chandung/LPT_2724.JPG",
     title: "Kỷ yếu",
     id: "kyyeu",
   },
